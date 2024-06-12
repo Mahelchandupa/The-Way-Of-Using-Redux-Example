@@ -1,20 +1,37 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Addtocart from './Addtocart'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProducts } from '../store/ProductSlice'
+import StatusCode from '../utils/StatusCode'
 
 function Products() {
 
-  const [products, setProducts] = useState([])
+  const dispatch = useDispatch()
+  const {data: products, status} = useSelector(state => state.products)
 
   useEffect(() => {
     fetchListProducts()
   }, [])  
 
   const fetchListProducts = async () => {
-    const response = await fetch(`https://fakestoreapi.com/products`)
-    const data = await response.json()
-    setProducts(data)
+    // const response = await fetch(`https://fakestoreapi.com/products`)
+    // const data = await response.json()
+    // setProducts(data)
+
+    //dispatch an action for get products
+    dispatch(getProducts())
+    
   }  
+
+  
+  if(status === StatusCode.LOADING) {
+    return <h1 className='text-2xl text-center mb-20'>Loading...</h1>
+  }
+
+  if(status === StatusCode.FAILED) {
+    return <h1 className='text-2xl text-center mb-20'>Failed to load products</h1>
+  }
 
 
   return (

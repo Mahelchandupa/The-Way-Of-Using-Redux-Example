@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 function NavBar() {
 
-  const cart = useSelector(state => state.cart)
+  const { cartItems: cart} = useSelector(state => state.cart)
 
   return (
     <div className=' fixed top-0 w-full h-16 flex justify-between items-center lg:px-16 px-3 bg-slate-300 shadow-md'>
