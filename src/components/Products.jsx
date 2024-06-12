@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Addtocart from './Addtocart'
 
 function Products() {
 
@@ -15,6 +16,7 @@ function Products() {
     setProducts(data)
   }  
 
+
   return (
     <div className=' flex flex-wrap gap-2 lg:gap-5 items-center justify-center'>
        {
@@ -27,7 +29,7 @@ function Products() {
                     </div>
                     <p className=' text-center'>Rs.{product?.price}</p>
                </div>
-               <button className=' py-2 px-4 bg-orange-400 text-white rounded-md'>Add to Cart</button>
+               <Addtocart product={product}/>
             </div>
          ))
        } 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import Addtocart from '../components/Addtocart'
 
 function Product() {
 
@@ -29,7 +30,7 @@ function Product() {
             <h1 className=' text-2xl font-bold'>{productDetails?.title}</h1>
             <p className=' text-red-500 text-2xl'>Rs.{productDetails?.price}</p>
             <p className=' text-slate-500'>{productDetails?.description}</p>
-            <button className=' py-2 px-4 bg-orange-400 text-white rounded-md'>Add to Cart</button>
+            <Addtocart product={productDetails}/>
           </div>
        </div>
     </div>
